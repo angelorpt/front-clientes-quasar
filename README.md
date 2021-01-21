@@ -4,6 +4,8 @@ Um projeto desenvolvido Quasar Framework
 
 * Veja a documentação no [site oficial](https://quasar.dev/)
 
+* Veja a [demo](https://peaceful-jang-890108.netlify.app/) deste projeto
+
 ## Instale as Dependencias
 
 
