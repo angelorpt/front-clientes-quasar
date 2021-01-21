@@ -166,15 +166,19 @@ export default {
 
     async getCep(value) {
       value = value.replace(/\D/g, "");
-      let result   = await this.$axios.get(`https://cors-anywhere.herokuapp.com/https://viacep.com.br/ws/${value}/json/`);
-      let dadosCep = result.data
-      this.cliente = {
-        ...this.cliente,
-        rua         : dadosCep.logradouro,
-        complemento : dadosCep.complemento,
-        bairro      : dadosCep.bairro,
-        cidade      : dadosCep.localidade,
-        uf          : dadosCep.uf,
+      try {
+        let result   = await this.$axios.get(`https://cors-anywhere.herokuapp.com/https://viacep.com.br/ws/${value}/json/`);
+        let dadosCep = result.data
+        this.cliente = {
+          ...this.cliente,
+          rua         : dadosCep.logradouro,
+          complemento : dadosCep.complemento,
+          bairro      : dadosCep.bairro,
+          cidade      : dadosCep.localidade,
+          uf          : dadosCep.uf,
+        }
+      } catch (error) {
+        this.notificar('CEP Inválido', 'red', 'center');
       }
     }
   },
